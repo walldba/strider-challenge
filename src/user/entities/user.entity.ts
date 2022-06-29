@@ -1,7 +1,7 @@
 import { Column, Entity, OneToMany } from 'typeorm';
 import { Post } from '../../post/entities/post.entity';
 import { BaseEntity } from '../../shared/base.entity';
-import { IUser } from '../interfaces/user.interface';
+import { IUser } from '../interfaces/user-entity.interface';
 
 @Entity({ name: 'users' })
 export class User extends BaseEntity implements IUser {
