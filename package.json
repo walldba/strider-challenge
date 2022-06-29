@@ -1,0 +1,16 @@
+{
+  "name": "strider-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:walldba/strider-challenge.git",
+  "author": "wallacedba <wallacedba@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "husky": "^8.0.1"
+  }
+}
