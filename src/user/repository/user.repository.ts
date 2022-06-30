@@ -14,4 +14,16 @@ export class UserRepository extends Repository<User> {
   async findById(id: string): Promise<User> {
     return await this.userRepository.findOne(id, { relations: ['posts'] });
   }
+
+  async findPostsPerDay(id: string): Promise<number> {
+    const [result] = await this.userRepository.query(
+      `SELECT COUNT(*) as total
+    FROM posts
+    WHERE "userId" = $1
+    AND created_at >= now() - INTERVAL '24 hours'`,
+      [id],
+    );
+
+    return Number(result.total);
+  }
 }

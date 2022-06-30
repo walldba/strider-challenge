@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { PostCreateRequestDto } from '../../post/dto/post-create-request.dto';
 import { PostLimitFilterResquestDto } from '../../post/dto/post-limit-request.dto';
 import { Post } from '../../post/entities/post.entity';
@@ -32,6 +32,16 @@ export class UserService implements IUserService {
     postCreateRequestDto: PostCreateRequestDto,
   ): Promise<Post> {
     const post = PostCreateRequestDto.toEntity(userId, postCreateRequestDto);
+
+    const sentPosts = await this.userRepository.findPostsPerDay(userId);
+
+    if (sentPosts > 5) {
+      throw new BadRequestException({
+        message: `It's not possible to make more than 5 posts per day`,
+        userId,
+        sentPosts,
+      });
+    }
 
     return await this.postService.create(post);
   }
