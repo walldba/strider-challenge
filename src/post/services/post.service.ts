@@ -1,4 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import { PaginationOptions } from '../../shared/interfaces/pagination.interface';
+import { PaginatedResponse } from '../../shared/utils/pagination.util';
+import { PostLimitFilterResquestDto } from '../dto/post-limit-request.dto';
 import { Post } from '../entities/post.entity';
 import { IPost } from '../interfaces/post-entity.interface';
 import { IPostService } from '../interfaces/post-service.interface';
@@ -11,6 +14,14 @@ export class PostService implements IPostService {
   async find(): Promise<Post[]> {
     throw new Error('Method not implemented.');
   }
+
+  async findUserPosts(
+    userId: string,
+    pagination: PaginationOptions,
+  ): Promise<PaginatedResponse<Post[]>> {
+    return await this.postRepository.findUserPosts(userId, pagination);
+  }
+
   async create(post: IPost): Promise<Post> {
     return await this.postRepository.createPost(post);
   }
