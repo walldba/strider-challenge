@@ -6,8 +6,8 @@ import { IPost } from '../interfaces/post-entity.interface';
 
 @Entity({ name: 'posts' })
 export class Post extends BaseEntity implements IPost {
-  @Column({ type: 'varchar', length: 777 })
-  content: string;
+  @Column({ nullable: true, type: 'varchar', length: 777 })
+  content?: string;
 
   @ManyToOne(() => User, (user) => user.posts)
   user: User;
