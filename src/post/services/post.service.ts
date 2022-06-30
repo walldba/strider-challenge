@@ -11,8 +11,8 @@ import { PostRepository } from '../repository/post.repository';
 export class PostService implements IPostService {
   constructor(private readonly postRepository: PostRepository) {}
 
-  async find(): Promise<Post[]> {
-    throw new Error('Method not implemented.');
+  async findById(id: string): Promise<Post> {
+    return await this.postRepository.findById(id);
   }
 
   async findUserPosts(

@@ -14,6 +14,11 @@ export class PostRepository extends Repository<Post> {
   ) {
     super();
   }
+
+  async findById(id: string): Promise<Post> {
+    return await this.postRepository.findOne(id);
+  }
+
   async findUserPosts(
     userId: string,
     limitFilterResquestDto: PostLimitFilterResquestDto,
