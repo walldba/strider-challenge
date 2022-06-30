@@ -4,6 +4,7 @@ import { PaginatedResponse } from '../../shared/utils/pagination.util';
 import { PostLimitFilterResquestDto } from '../dto/post-limit-request.dto';
 import { Post } from '../entities/post.entity';
 import { IPost } from '../interfaces/post-entity.interface';
+import { PostFilterOptions } from '../interfaces/post-filter.interface';
 import { IPostService } from '../interfaces/post-service.interface';
 import { PostRepository } from '../repository/post.repository';
 
@@ -13,6 +14,12 @@ export class PostService implements IPostService {
 
   async findById(id: string): Promise<Post> {
     return await this.postRepository.findById(id);
+  }
+
+  async findWithFilters(
+    filter: PostFilterOptions,
+  ): Promise<PaginatedResponse<Post[]>> {
+    return await this.postRepository.findWithFilters(filter);
   }
 
   async findUserPosts(
