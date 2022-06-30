@@ -4,13 +4,14 @@ import {
   IsString,
   IsUUID,
   MaxLength,
+  ValidateIf,
 } from 'class-validator';
 import { Post } from '../entities/post.entity';
 import { PostTypeEnum } from '../enums/post-type.enum';
+import { IsValidContentByType } from '../validators/post.validator';
 
 export class PostCreateRequestDto {
-  @IsString()
-  @MaxLength(777)
+  @IsValidContentByType()
   content: string;
 
   @IsEnum(PostTypeEnum)
