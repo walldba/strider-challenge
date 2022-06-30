@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   Param,
   ParseUUIDPipe,
   Post,
@@ -13,6 +14,12 @@ import { UserService } from '../services/user.service';
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
+
+  @Get('/:id')
+  async findById(@Param('id', ParseUUIDPipe) id: string) {
+    return await this.userService.findById(id);
+  }
+
   @Post('/:id/post')
   @UsePipes(new ValidationPipe())
   async createPost(
