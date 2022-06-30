@@ -1,5 +1,5 @@
 import { Entity, Column, ManyToOne } from 'typeorm';
-import { BaseEntity } from '../../shared/base.entity';
+import { BaseEntity } from '../../shared/entities/base.entity';
 import { User } from '../../user/entities/user.entity';
 import { PostTypeEnum } from '../enums/post-type.enum';
 import { IPost } from '../interfaces/post-entity.interface';
