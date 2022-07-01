@@ -15,18 +15,18 @@ export class HomeService {
   ) {}
 
   async findPosts(
-    homeFindResquestDto: HomeFindRequestDto,
+    homeFindRequestDto: HomeFindRequestDto,
     pagination: PaginationOptions,
   ): Promise<PaginatedResponse<Post[]>> {
-    if (homeFindResquestDto.onlyMyPosts) {
+    if (homeFindRequestDto.onlyMyPosts) {
       return await this.postService.findUserPosts(
-        homeFindResquestDto.userId,
+        homeFindRequestDto.userId,
         pagination,
       );
     }
 
     return await this.postService.findWithFilters({
-      ...homeFindResquestDto,
+      ...homeFindRequestDto,
       ...pagination,
     });
   }
