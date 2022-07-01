@@ -10,9 +10,9 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { PostCreateRequestDto } from '../../post/dto/post-create-request.dto';
-import { PostLimitFilterResquestDto } from '../../post/dto/post-limit-request.dto';
 import { parsePaginationOptions } from '../../shared/utils/pagination.util';
 import { HomeFindRequestDto } from '../dto/home-find-request.dto';
+import { HomeLimitFilterResquestDto } from '../dto/home-limit-request.dto';
 import { HomeService } from '../services/home.service';
 
 @Controller('home')
@@ -23,11 +23,11 @@ export class HomeController {
   @UsePipes(new ValidationPipe({ transform: true }))
   async findPosts(
     @Query() homeFindRequestDto: HomeFindRequestDto,
-    @Query() limitFilterResquestDto: PostLimitFilterResquestDto,
+    @Query() homeLimitFilterResquestDto: HomeLimitFilterResquestDto,
   ) {
     return await this.homeService.findPosts(
       homeFindRequestDto,
-      parsePaginationOptions(limitFilterResquestDto),
+      parsePaginationOptions(homeLimitFilterResquestDto),
     );
   }
 
