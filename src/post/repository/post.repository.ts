@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Between, EntityRepository, MoreThan, Repository } from 'typeorm';
 import { PaginationOptions } from '../../shared/interfaces/pagination.interface';
 import { PaginatedResponse } from '../../shared/utils/pagination.util';
-import { PostLimitFilterResquestDto } from '../dto/post-limit-request.dto';
 import { Post } from '../entities/post.entity';
 import { IPost } from '../interfaces/post-entity.interface';
 import { PostFilterOptions } from '../interfaces/post-filter.interface';
