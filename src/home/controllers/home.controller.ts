@@ -1,12 +1,15 @@
 import {
+  Body,
   Controller,
   Get,
   Param,
   ParseUUIDPipe,
+  Post,
   Query,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
+import { PostCreateRequestDto } from '../../post/dto/post-create-request.dto';
 import { PostLimitFilterResquestDto } from '../../post/dto/post-limit-request.dto';
 import { parsePaginationOptions } from '../../shared/utils/pagination.util';
 import { HomeFindRequestDto } from '../dto/home-find-request.dto';
@@ -26,5 +29,14 @@ export class HomeController {
       homeFindRequestDto,
       parsePaginationOptions(limitFilterResquestDto),
     );
+  }
+
+  @Post('/:userId/post')
+  @UsePipes(new ValidationPipe())
+  async createPost(
+    @Param('userId', ParseUUIDPipe) userId: string,
+    @Body() postCreateRequestDto: PostCreateRequestDto,
+  ) {
+    return await this.homeService.createPost(userId, postCreateRequestDto);
   }
 }
