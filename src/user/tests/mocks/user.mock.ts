@@ -1,14 +1,26 @@
 import { faker } from '@faker-js/faker';
-import { PostTypeEnum } from '../../../post/enums/post-type.enum';
-import { PostMock } from '../../../post/tests/mocks/post.mock';
+import { randomUUID } from 'crypto';
 import { UserLimitFilterResquestDto } from '../../dto/user-limit-request.dto';
-import { IUser } from '../../interfaces/user-entity.interface';
+import { User } from '../../entities/user.entity';
 
 export class UserMock {
-  static getUserMock(): IUser {
+  static getUserMock(): User {
     return {
+      id: randomUUID(),
+      createdAt: faker.date.recent(),
       posts: [],
       username: faker.internet.userName(),
+      toJSON() {
+        return {
+          username: this.username,
+          joinedAt: this.createdAt.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }),
+          posts: this.posts.length,
+        };
+      },
     };
   }
 

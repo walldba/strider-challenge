@@ -22,4 +22,9 @@ export class User extends BaseEntity implements IUser {
       posts: this.posts.length,
     };
   }
+
+  constructor(data: IUser) {
+    super();
+    Object.assign(this, data);
+  }
 }
