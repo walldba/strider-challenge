@@ -15,8 +15,9 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return "App Status!"', async () => {
+      const status = await appController.getStatus();
+      expect(status.name).toContain('strider-challenge');
     });
   });
 });
