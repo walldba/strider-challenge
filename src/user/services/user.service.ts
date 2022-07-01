@@ -35,7 +35,7 @@ export class UserService implements IUserService {
 
     const sentPosts = await this.userRepository.findPostsPerDay(userId);
 
-    if (sentPosts > 5) {
+    if (sentPosts >= 5) {
       throw new BadRequestException({
         message: `It's not possible to make more than 5 posts per day`,
         userId,
@@ -55,7 +55,9 @@ export class UserService implements IUserService {
         });
       }
 
-      const isRepost = [PostTypeEnum.REPOST].includes(postCreateRequestDto.type);
+      const isRepost = [PostTypeEnum.REPOST].includes(
+        postCreateRequestDto.type,
+      );
       if (isRepost) this.handleRepost(postCreateRequestDto, originalPost);
 
       const isQuote = [PostTypeEnum.QUOTE].includes(postCreateRequestDto.type);
