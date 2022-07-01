@@ -10,8 +10,8 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { PostCreateRequestDto } from '../../post/dto/post-create-request.dto';
-import { PostLimitFilterResquestDto } from '../../post/dto/post-limit-request.dto';
 import { parsePaginationOptions } from '../../shared/utils/pagination.util';
+import { UserLimitFilterResquestDto } from '../dto/user-limit-request.dto';
 import { UserService } from '../services/user.service';
 
 @Controller('user')
@@ -26,11 +26,11 @@ export class UserController {
   @Get('/:id/posts')
   async findPosts(
     @Param('id', ParseUUIDPipe) userId: string,
-    @Query() limitFilterResquestDto: PostLimitFilterResquestDto,
+    @Query() userLimitFilterResquestDto: UserLimitFilterResquestDto,
   ) {
     return await this.userService.findPosts(
       userId,
-      parsePaginationOptions(limitFilterResquestDto),
+      parsePaginationOptions(userLimitFilterResquestDto),
     );
   }
 
