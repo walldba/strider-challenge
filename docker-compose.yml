@@ -1,6 +1,25 @@
 version: '3'
 
 services:
+  app:
+    env_file:
+      - .env
+    container_name: strider_challenge
+    image: strider:latest
+    build:
+      context: .
+      target: development
+      dockerfile: ./Dockerfile
+    command: npm run start
+    depends_on:
+      - postgres
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: unless-stopped
+
   postgres:
     image: 'postgres:latest'
 
