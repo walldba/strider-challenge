@@ -9,7 +9,7 @@ export class UserMock {
       id: randomUUID(),
       createdAt: faker.date.recent(),
       posts: [],
-      username: faker.internet.userName(),
+      username: faker.name.firstName(),
       toJSON() {
         return {
           username: this.username,
