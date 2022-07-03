@@ -11,7 +11,7 @@ export interface DatabaseConfig {
 
 export default registerAs<DatabaseConfig>('database', () => ({
   type: 'postgres',
-  host: process.env.HOST || 'localhost',
+  host: process.env.HOST || 'postgres',
   port: +process.env.PORT || 5432,
   username: process.env.DB_USER || 'root',
   password: process.env.DB_PASS || 'root',
