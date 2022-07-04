@@ -32,6 +32,14 @@ export class UserService implements IUserService {
     postCreateRequestDto: PostCreateRequestDto,
   ): Promise<Post> {
     const post = PostCreateRequestDto.toEntity(userId, postCreateRequestDto);
+    const user = await this.userRepository.findById(userId);
+
+    if (!user) {
+      throw new BadRequestException({
+        message: `User not found`,
+        userId,
+      });
+    }
 
     const sentPosts = await this.userRepository.findPostsPerDay(userId);
 
