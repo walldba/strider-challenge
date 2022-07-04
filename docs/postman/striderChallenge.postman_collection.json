@@ -1,0 +1,492 @@
+{
+	"info": {
+		"_postman_id": "6fa08517-e17d-439e-96b2-09339d65c1a0",
+		"name": "Strider - Challenge",
+		"description": "This app is a new social media application called Posterr. Posterr is very similar to Twitter, but it has far fewer features.\n\nThis collection has the Home and User endpoints.\n\nThere is a user named Wallace90, and he has the ID: \"**fb33cbef-d427-4c37-92a8-5050403bfee4**\", this ID is being used in the Postman examples, but if you want to use another user, just check the Id's in the database.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3292537"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Find User by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/user/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "fb33cbef-d427-4c37-92a8-5050403bfee4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find User Posts by Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"Some text\",\n    \"type\": \"original\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/:id/posts?skip=0&take=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								":id",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "take",
+									"value": "5"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "fb33cbef-d427-4c37-92a8-5050403bfee4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"original\",\n    \"content\": \"Teste\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/user/:id/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								":id",
+								"post"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "fb33cbef-d427-4c37-92a8-5050403bfee4"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"original\",\n    \"content\": \"Some Text\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/user/:id/post",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										":id",
+										"post"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "fb33cbef-d427-4c37-92a8-5050403bfee4"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Quote",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"quote\",\n    \"originalPostId\": \"1e7998fd-53eb-4017-a306-eb0d7d9cbf1e\",\n    \"content\": \"Some Text\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/user/:id/post",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										":id",
+										"post"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "fb33cbef-d427-4c37-92a8-5050403bfee4"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Repost",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"repost\",\n    \"originalPostId\": \"1e7998fd-53eb-4017-a306-eb0d7d9cbf1e\",\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/user/:id/post",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"user",
+										":id",
+										"post"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "fb33cbef-d427-4c37-92a8-5050403bfee4"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Home",
+			"item": [
+				{
+					"name": "Find Posts with Filters",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"Some text\",\n    \"type\": \"original\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/home/posts?userId=fb33cbef-d427-4c37-92a8-5050403bfee4&onlyMyPosts=true&skip=0&take=5&startDate=2022-06-26&endDate=2022-07-01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"home",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "fb33cbef-d427-4c37-92a8-5050403bfee4"
+								},
+								{
+									"key": "onlyMyPosts",
+									"value": "true"
+								},
+								{
+									"key": "skip",
+									"value": "0"
+								},
+								{
+									"key": "take",
+									"value": "5"
+								},
+								{
+									"key": "startDate",
+									"value": "2022-06-26"
+								},
+								{
+									"key": "endDate",
+									"value": "2022-07-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"original\",\n    \"content\": \"Some Text\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/home/:userId/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"home",
+								":userId",
+								"post"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "fb33cbef-d427-4c37-92a8-5050403bfee4"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Post",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"original\",\n    \"content\": \"Some Text\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/home/:userId/post",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"home",
+										":userId",
+										"post"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "fb33cbef-d427-4c37-92a8-5050403bfee4"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Quote",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"quote\",\n    \"originalPostId\": \"1e7998fd-53eb-4017-a306-eb0d7d9cbf1e\",\n    \"content\": \"Some Text\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/home/:userId/post",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"home",
+										":userId",
+										"post"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "fb33cbef-d427-4c37-92a8-5050403bfee4"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Repost",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"repost\",\n    \"originalPostId\": \"1e7998fd-53eb-4017-a306-eb0d7d9cbf1e\",\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/home/:userId/post",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"home",
+										":userId",
+										"post"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "fb33cbef-d427-4c37-92a8-5050403bfee4"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Get App Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
