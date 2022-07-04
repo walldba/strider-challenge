@@ -12,7 +12,7 @@ const client = new Client(connectionOpts);
 async function generateUsers() {
   await client.query(
     `INSERT INTO users (id, created_at, username) 
-    VALUES(uuid_generate_v4(), 'now'::text::timestamp(0) with time zone, 'Wallace90');
+    VALUES(fb33cbef-d427-4c37-92a8-5050403bfee4, 'now'::text::timestamp(0) with time zone, 'Wallace90');
   
     INSERT INTO users (id, created_at, username) 
     VALUES(uuid_generate_v4(), 'now'::text::timestamp(0) with time zone, 'Zuckerberg84');
