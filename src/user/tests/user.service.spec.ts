@@ -83,6 +83,20 @@ describe('User Service tests', () => {
     expect(postService.create).toHaveBeenCalled();
   });
 
+  it('should throw BadRequestException when try create post to user undefined', async () => {
+    const userId = randomUUID();
+    const postCreateRequesMock = PostMock.getPostCreateRequestMock(
+      PostTypeEnum.ORIGINAL,
+    );
+
+    jest.spyOn(userRepository, 'findById').mockResolvedValue(undefined);
+
+    await expect(
+      service.createPost(userId, postCreateRequesMock),
+    ).rejects.toThrowError(new BadRequestException('User not found'));
+    expect(userRepository.findById).toHaveBeenCalledWith(userId);
+  });
+
   it('should throw BadRequestException when try create post to user with more than 5 posts', async () => {
     const userId = randomUUID();
     const postCreateRequesMock = PostMock.getPostCreateRequestMock(
