@@ -10,6 +10,6 @@ COPY . .
 
 RUN npm run build
 
-RUN ["chmod", "+x", "./init.sh"]
+RUN ["chmod", "+x", "./scripts/init.sh"]
 
-ENTRYPOINT [ "./init.sh" ]
+ENTRYPOINT [ "./scripts/init.sh" ]
