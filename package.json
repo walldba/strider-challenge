@@ -21,7 +21,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "prepare": "husky install",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config ormconfig.ts",
-    "typeorm:run": "npm run typeorm migration:run"
+    "typeorm:run": "npm run typeorm migration:run",
+    "seed": "node ./scripts/database-seed.js"
   },
   "dependencies": {
     "@faker-js/faker": "^7.3.0",
