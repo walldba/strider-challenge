@@ -1,5 +1,4 @@
 import { faker } from '@faker-js/faker';
-import { IPost } from '../../interfaces/post-entity.interface';
 import { randomUUID } from 'crypto';
 import { PostTypeEnum } from '../../enums/post-type.enum';
 import { PostCreateRequestDto } from '../../dto/post-create-request.dto';

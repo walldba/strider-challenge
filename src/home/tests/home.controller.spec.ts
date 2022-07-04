@@ -33,6 +33,7 @@ describe('Home Controller tests', () => {
 
   it('should be defined', () => {
     expect(controller).toBeDefined();
+    expect(service).toBeDefined();
   });
 
   it('should find posts', async () => {
